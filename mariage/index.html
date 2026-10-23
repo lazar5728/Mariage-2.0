@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notre mariage</title>
+<meta name="theme-color" content="#3b2418">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;1,500&family=Cinzel:wght@500&family=Jost:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script>
+/* ============ ✏️ MODIFIEZ VOS TEXTES ICI ============ */
+const C = {
+  prenom1: "Bawa  Lazar",
+  prenom2: "Saley  Aicha",
+  dateISO: "2027-06-19T15:00:00",          // date et heure du mariage (AAAA-MM-JJTHH:MM:SS)
+  dateTexte: "Samedi 19 juin 2027",
+  salle: "Africa Hall",
+  adresse: "12 rue s",
+  ville: "Niamey-Recasement",
+  hashtag: "#LazarEtAicha2027",
+  accueil: "Nous avons la joie de vous inviter à célébrer notre mariage.",
+  histoireTitre: "Notre histoire",
+  histoire: [
+    ["La rencontre", "Mars 2019", "Un regard, un fou rire, et le sentiment que quelque chose commençait."],
+    ["Le premier rendez-vous", "Avril 2019", "Un dîner qui s’est prolongé jusqu’à la fermeture du restaurant."],
+    ["La demande", "Août 2025", "Une question, un genou à terre, et un « oui » sans hésiter."]
+  ],
+  galerieTitre: "Galerie",
+  programmeTitre: "Le programme",
+  programme: [
+    ["15h00", "Accueil des invités", "Retrouvailles et boissons de bienvenue"],
+    ["16h00", "Cérémonie", "Échange des vœux et des alliances"],
+    ["17h30", "Séance photos", "Photos de famille et d’amis"],
+    ["19h30", "Repas", "Dîner, discours et soirée dansante"],
+    ["23h00", "Remerciements", "Un dernier mot avant la fin de la fête"]
+  ],
+  lieuTitre: "Le lieu",
+  tenueTitre: "Tenue",
+  tenue: "Élégante, dans les tons chauds et naturels. Évitez le blanc, réservé à la mariée.",
+  pastilles: ["#f6efe3", "#b8573a", "#3b2418"],
+  rsvpTitre: "Confirmer ma présence",
+  rsvpTexte: "Merci de répondre avant le 19 mars 2027.",
+  rsvpLien: "https://forms.gle/nqbQgUA1NvNt3HH88",   // lien de votre Google Form
+  merci: "Merci de faire partie de notre histoire"
+};
+/* ================================================== */
+</script>
+<style>
+:root{--cr:#f6efe3;--cr2:#ecdfcb;--tc:#b8573a;--tc2:#9c4529;--br:#3b2418;--br2:#6b4a3a;
+--sc:Pinyon Script,cursive;--ti:Bodoni Moda,serif;--cz:Cinzel,serif;--tx:Jost,system-ui,sans-serif;
+--ease:cubic-bezier(.22,.61,.36,1)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--cr);color:var(--br);font:300 1.05rem/1.7 var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden;height:100svh}
+h2,h3{font-family:var(--ti);font-weight:500;line-height:1.2}
+h2{font-size:clamp(2rem,8vw,2.8rem);margin-bottom:.4em}
+.k{font-family:var(--cz);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;color:var(--tc)}
+section{padding:5.5rem 1.6rem;max-width:640px;margin:auto;text-align:center}
+a:focus-visible,button:focus-visible{outline:2px solid var(--tc);outline-offset:4px}
+.btn{display:inline-block;margin-top:1.4rem;padding:.95rem 2rem;background:var(--tc);color:var(--cr);border:0;border-radius:50px;font:400 .9rem var(--cz);letter-spacing:.14em;text-decoration:none;cursor:pointer;transition:background 1s var(--ease),transform 1s var(--ease)}
+.btn:hover{background:var(--tc2);transform:translateY(-2px)}
+.btn.o{background:none;color:var(--br);border:1px solid var(--br)}
+.btn.o:hover{background:var(--br);color:var(--cr)}
+
+/* Apparition */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.w{display:inline-block;opacity:0;transform:translateY(.6em);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:calc(var(--i)*110ms)}
+.in .w,.w.in{opacity:1;transform:none}
+
+/* Enveloppe */
+#intro{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 40%,#4a2d1f,var(--br));display:grid;place-items:center;transition:opacity 1.6s var(--ease),visibility 1.6s}
+#intro.done{opacity:0;visibility:hidden}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:3rem;padding-top:6rem}
+.env{position:relative;width:min(82vw,330px);aspect-ratio:3/2;perspective:900px}
+.env>*{position:absolute}
+.back{inset:0;background:var(--tc2);border-radius:4px}
+.card{left:7%;right:7%;top:6%;bottom:6%;background:var(--cr);z-index:1;display:grid;place-content:center;text-align:center;border-radius:2px;transition:transform 1.4s var(--ease),z-index 0s 0s;box-shadow:0 0 0 1px #0001;color:var(--br)}
+.card b{font:400 2rem/1.1 var(--sc)}
+.card span{font:.6rem var(--cz);letter-spacing:.2em;color:var(--tc);margin-top:.5rem}
+.pocket{inset:0;background:var(--tc);z-index:2;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:4px}
+.flap{left:0;right:0;top:0;height:56%;background:#c4623f;z-index:3;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1.3s var(--ease)}
+.seal{left:50%;top:56%;width:22%;aspect-ratio:1;translate:-50% -50%;z-index:4;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9825f,#8a2f16 75%);box-shadow:0 3px 8px #0006;display:grid;place-items:center;color:#f6d9c4;font:1.05rem var(--sc);transition:opacity .6s,scale .6s}
+.seal::after{content:"";position:absolute;inset:12%;border:1px solid #f6d9c455;border-radius:50%}
+#intro.open .flap{transform:rotateX(180deg);z-index:0}
+#intro.open .seal{opacity:0;scale:.6}
+#intro.out .card{transform:translateY(-62%) ;z-index:5}
+#intro.big .env{transition:transform 1.6s var(--ease),opacity 1.6s;transform:scale(2.4) translateY(18%);opacity:0}
+#intro.open .opn{opacity:0;pointer-events:none}
+.opn{transition:opacity .6s}
+
+/* Accueil */
+#hero{position:relative;min-height:100svh;max-width:none;padding:0;display:grid;place-items:center;color:var(--cr);background:linear-gradient(#3b2418aa,#3b2418cc),url(photos/hero.jpg) center/cover}
+#hero .in-h{padding:2rem 1.4rem;width:100%}
+.noms{font:400 clamp(3.4rem,17vw,6rem)/1 var(--sc);margin:1rem 0}
+.noms i{display:block;font-size:.45em;font-style:normal;margin:.1em 0}
+#hero p.l{max-width:20rem;margin:0 auto 1.4rem}
+#cd{display:flex;justify-content:center;gap:.9rem;margin-top:2rem}
+#cd div{min-width:3.9rem;padding:.7rem 0;border:1px solid #f6efe366;border-radius:3px}
+#cd b{display:block;font:500 1.7rem var(--ti)}
+#cd span{font:.6rem var(--cz);letter-spacing:.16em;text-transform:uppercase}
+
+/* Histoire */
+.tl{position:relative;text-align:left;margin-top:2.5rem;padding-left:2.2rem}
+.tl::before,.tl::after{content:"";position:absolute;left:.45rem;top:.4rem;bottom:.4rem;width:1px}
+.tl::before{background:var(--cr2)}
+.tl::after{background:var(--tc);transform-origin:top;transform:scaleY(var(--p,0))}
+.ev{position:relative;margin-bottom:2.6rem}
+.ev::before{content:"";position:absolute;left:-2.2rem;top:.45rem;width:.95rem;height:.95rem;border-radius:50%;background:var(--cr);border:1px solid var(--tc)}
+.ev.in::before{background:var(--tc);transition:background 1.2s}
+.ev h3{font-size:1.45rem}
+
+/* Galerie */
+#gal{max-width:none;padding-inline:0}
+#gal h2{padding:0 1.6rem}
+.g{display:grid;gap:1rem;padding:1.6rem;max-width:560px;margin:auto}
+.g figure{overflow:hidden;aspect-ratio:4/5;border-radius:3px;background:var(--cr2)}
+.g figure:nth-child(even){aspect-ratio:1;width:84%;margin-left:auto}
+.g img{width:100%;height:100%;object-fit:cover;transform:scale(1.25) translateY(var(--y,0));will-change:transform}
+
+/* Programme */
+.pg{margin-top:2rem;text-align:left}
+.pg div{display:grid;grid-template-columns:4.4rem 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--cr2)}
+.pg time{font:500 1.35rem var(--ti);color:var(--tc)}
+.pg h3{font-size:1.15rem}.pg p{font-size:.95rem;color:var(--br2)}
+
+/* Lieu / tenue / rsvp */
+iframe{width:100%;height:280px;border:0;border-radius:3px;margin-top:1.6rem;filter:sepia(.25)}
+.pa{display:flex;justify-content:center;gap:1rem;margin:2rem 0 .6rem}
+.pa i{width:3.4rem;height:3.4rem;border-radius:50%;border:1px solid var(--br)}
+#rsvp{background:var(--br);color:var(--cr);max-width:none}
+#rsvp>*{max-width:520px;margin-inline:auto}
+#rsvp .k{color:#e29a7b}
+#rsvp .btn{background:var(--cr);color:var(--br)}
+footer{padding:5rem 1.6rem 4rem;text-align:center;background:var(--br);color:var(--cr);border-top:1px solid #f6efe322}
+footer p{font:400 1.7rem/1.3 var(--sc);max-width:18rem;margin:auto}
+.ini{font:1.1rem var(--cz);letter-spacing:.3em;margin:1.6rem 0 .4rem;color:#e29a7b}
+
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation:none!important}
+ .rv,.w{opacity:1;transform:none}
+ .g img{transform:scale(1.05)}
+}
+</style>
+</head>
+<body class="lock">
+
+<div id="intro">
+ <div class="wrap">
+  <div class="env" aria-hidden="true">
+   <div class="back"></div>
+   <div class="card"><b data-p="noms"></b><span data-k="dateTexte"></span></div>
+   <div class="pocket"></div><div class="flap"></div><div class="seal" data-p="sceau"></div>
+  </div>
+  <button class="btn opn" id="open">Ouvrir notre invitation</button>
+ </div>
+</div>
+
+<main>
+<section id="hero">
+ <div class="in-h">
+  <p class="k rv" data-k="dateTexte"></p>
+  <h1 class="noms rv"><span data-k="prenom1"></span><i>&amp;</i><span data-k="prenom2"></span></h1>
+  <p class="l rv" data-k="accueil"></p>
+  <div id="cd" class="rv" aria-live="off"></div>
+ </div>
+</section>
+
+<section id="histoire"><p class="k rv">Depuis le début</p><h2 data-w="histoireTitre"></h2><div class="tl" id="tl"></div></section>
+<section id="gal"><p class="k rv">Souvenirs</p><h2 data-w="galerieTitre"></h2><div class="g" id="g"></div></section>
+<section id="prog"><p class="k rv">Le jour J</p><h2 data-w="programmeTitre"></h2><div class="pg" id="pg"></div></section>
+<section id="lieu"><p class="k rv">Où nous retrouver</p><h2 data-w="lieuTitre"></h2>
+ <p class="rv"><b style="font-weight:400" data-k="salle"></b><br><span data-k="adresse"></span>, <span data-k="ville"></span></p>
+ <iframe class="rv" id="map" loading="lazy" title="Carte du lieu" referrerpolicy="no-referrer-when-downgrade"></iframe>
+ <a class="btn rv" id="itin" target="_blank" rel="noopener">Ouvrir l’itinéraire</a></section>
+<section id="tenue"><p class="k rv">Dress code</p><h2 data-w="tenueTitre"></h2><p class="rv" data-k="tenue"></p><div class="pa rv" id="pa"></div></section>
+<section id="rsvp"><p class="k rv">Votre réponse</p><h2 data-w="rsvpTitre"></h2><p class="rv" data-k="rsvpTexte"></p><a class="btn rv" id="rl" target="_blank" rel="noopener">Répondre à l’invitation</a></section>
+</main>
+
+<footer><p class="rv" data-k="merci"></p><div class="ini rv" data-p="ini"></div><span class="rv" data-k="hashtag"></span></footer>
+
+<script>
+const $=s=>document.querySelector(s), reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const ini=C.prenom1[0]+' & '+C.prenom2[0];
+document.title=C.prenom1+' & '+C.prenom2+' – Invitation';
+document.querySelectorAll('[data-k]').forEach(e=>e.textContent=C[e.dataset.k]);
+document.querySelectorAll('[data-p]').forEach(e=>e.textContent={noms:C.prenom1+' & '+C.prenom2,sceau:C.prenom1[0]+C.prenom2[0],ini}[e.dataset.p]);
+document.querySelectorAll('[data-w]').forEach(e=>{e.classList.add('rv');e.innerHTML=C[e.dataset.w].split(' ').map((w,i)=>`<span class="w" style="--i:${i}">${w}</span>`).join(' ')});
+
+$('#tl').innerHTML=C.histoire.map(([t,d,p])=>`<div class="ev rv"><span class="k">${d}</span><h3>${t}</h3><p>${p}</p></div>`).join('');
+$('#g').innerHTML=[1,2,3,4,5,6].map(n=>`<figure class="rv"><img src="photos/photo-${n}.jpg" alt="Photo ${n}" loading="lazy"></figure>`).join('');
+$('#pg').innerHTML=C.programme.map(([h,t,p])=>`<div class="rv"><time>${h}</time><span><h3>${t}</h3><p>${p}</p></span></div>`).join('');
+$('#pa').innerHTML=C.pastilles.map(c=>`<i style="background:${c}"></i>`).join('');
+const addr=encodeURIComponent(`${C.salle}, ${C.adresse}, ${C.ville}`);
+$('#map').src=`https://www.google.com/maps?q=${addr}&output=embed`;
+$('#itin').href=`https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+$('#rl').href=C.rsvpLien;
+
+/* Compte à rebours */
+const cd=$('#cd'),target=new Date(C.dateISO).getTime();
+function tick(){let s=Math.max(0,Math.floor((target-Date.now())/1000));
+ const v=[['jours',Math.floor(s/86400)],['heures',Math.floor(s/3600)%24],['min',Math.floor(s/60)%60],['sec',s%60]];
+ cd.innerHTML=v.map(([l,n])=>`<div><b>${String(n).padStart(2,'0')}</b><span>${l}</span></div>`).join('')}
+tick();setInterval(tick,1000);
+
+/* Apparition au défilement */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+
+/* Frise + profondeur galerie */
+const tl=$('#tl'),imgs=[...document.querySelectorAll('.g img')];
+function onScroll(){const h=innerHeight,r=tl.getBoundingClientRect();
+ tl.style.setProperty('--p',Math.min(1,Math.max(0,(h*.7-r.top)/r.height)));
+ if(!reduce)imgs.forEach(i=>{const b=i.parentNode.getBoundingClientRect();i.style.setProperty('--y',((b.top+b.height/2-h/2)/h*-9).toFixed(1)+'%')})}
+let t=0;addEventListener('scroll',()=>{t||(t=requestAnimationFrame(()=>{t=0;onScroll()}))},{passive:true});onScroll();
+
+/* Ouverture de l'enveloppe */
+$('#open').onclick=()=>{const i=$('#intro'),d=reduce?1:1;
+ i.classList.add('open');
+ setTimeout(()=>i.classList.add('out'),reduce?0:1100);
+ setTimeout(()=>i.classList.add('big'),reduce?0:2700);
+ setTimeout(()=>{i.classList.add('done');document.body.classList.remove('lock');scrollTo(0,0)},reduce?0:3300)};
+</script>
+</body>
+</html>

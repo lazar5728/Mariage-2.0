@@ -1,0 +1,4 @@
+1. Ouvrez index.html : modifiez les textes en haut (bloc "MODIFIEZ VOS TEXTES ICI").
+2. Remplacez les images du dossier photos/ en gardant les mêmes noms :
+   hero.jpg (portrait, plein écran) et photo-1.jpg à photo-6.jpg.
+   Conseil : images de 1200 px de large maximum, moins de 400 Ko chacune.
